@@ -33,20 +33,20 @@ function App() {
         })
         .then((data) => {
           setWeatherData(data);
-          toast.success("Congratulations! City found.",{
-            autoClose: 500, 
+          toast.success("Congratulations! City found.", {
+            autoClose: 500,
           });
         })
         .catch((error) => {
           toast.error("City not found. Please try again.", {
-            autoClose: 1000, 
+            autoClose: 1000,
           });
         });
     };
 
     const timeoutId = setTimeout(() => {
       fetchWeather();
-    }, 1500); 
+    }, 1500);
 
     setTypingTimeout(timeoutId);
 
@@ -54,9 +54,9 @@ function App() {
   }, [city]);
 
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white min-h-screen flex flex-col items-center justify-center">
-      <h1 className="text-4xl md:text-9xl font-bold mb-8">WEATHER APP</h1>
-      <div className="bg-white rounded-lg text-gray-800 shadow-lg p-8 w-11/12 sm:w-4/5 lg:w-3/4 xl:w-1/2">
+    <div className="overscroll-none bg-gradient-to-r from-blue-500 to-purple-600 text-white min-h-screen flex flex-col items-center justify-center">
+      <h1 className="text-4xl md:text-9xl font-bold mt-10 mb-8">WEATHER APP</h1>
+      <div className="bg-white rounded-lg text-gray-800 shadow-lg mb-8 p-8 w-11/12 sm:w-4/5 lg:w-3/4 xl:w-1/2">
         <ToastContainer />
         <Temperature
           setCity={setCity}
@@ -70,37 +70,33 @@ function App() {
             }
           }
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
           <Highlight
             icon={<TiWeatherWindy className="w-8 h-8 text-gray-800" />}
             title="Wind Status"
             value={
-              weatherData &&
-              `${weatherData.current.wind_mph} mph`
+              weatherData && `${weatherData.current.wind_mph} mph`
             }
           />
           <Highlight
             icon={<RiDropLine className="w-8 h-8 text-gray-800" />}
             title="Humidity"
             value={
-              weatherData &&
-              `${weatherData.current.humidity}%`
+              weatherData && `${weatherData.current.humidity}%`
             }
           />
           <Highlight
             icon={<HiOutlineEye className="w-8 h-8 text-gray-800" />}
             title="Visibility"
             value={
-              weatherData &&
-              `${weatherData.current.vis_miles} miles`
+              weatherData && `${weatherData.current.vis_miles} miles`
             }
           />
           <Highlight
             icon={<BiWind className="w-8 h-8 text-gray-800" />}
             title="Air Pressure"
             value={
-              weatherData &&
-              `${weatherData.current.pressure_mb} mb`
+              weatherData && `${weatherData.current.pressure_mb} mb`
             }
           />
         </div>
