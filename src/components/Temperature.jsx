@@ -17,9 +17,9 @@ function Temperature({ setCity, stats }) {
       />
       <div className="flex flex-col sm:flex-row items-center justify-center md:mr-14 space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
         {stats && stats.isDay !== 0 ? (
-          <IoMdSunny className="w-10 h-10 text-yellow-500 animate-bounce" />
+          <IoMdSunny className="w-10 h-10 mb-2 mt-4 text-yellow-500 animate-bounce" />
         ) : (
-          <IoMdMoon className="w-10 h-10 text-gray-500 animate-bounce" />
+          <IoMdMoon className="w-10 h-10 mb-2 mt-4 text-gray-500 animate-bounce" />
         )}
         <div className="text-center">
           {stats ? (
