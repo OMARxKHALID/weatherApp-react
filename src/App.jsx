@@ -4,6 +4,7 @@ import { RiDropLine } from "react-icons/ri";
 import { HiOutlineEye } from "react-icons/hi";
 import { TiWeatherWindy } from "react-icons/ti";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Temperature from "./components/Temperature";
 import Forecast from "./components/Forecast";
 import Highlight from "./components/Highlights";
@@ -34,14 +35,13 @@ function App() {
         })
         .then((data) => {
           setWeatherData(data);
-          console.log(data);
           toast.success("Congratulations! City found.", {
-            autoClose: 500,
+            autoClose: 1000,
           });
         })
         .catch((error) => {
           toast.error("City not found. Please try again.", {
-            autoClose: 1000,
+            autoClose: 1500, 
           });
         });
     };
@@ -59,7 +59,7 @@ function App() {
     <div className="overscroll-none bg-gradient-to-r from-blue-500 to-purple-600 text-white min-h-screen flex flex-col items-center justify-center">
       <h1 className="text-4xl md:text-9xl font-bold mt-10 mb-8">WEATHER APP</h1>
       <div className="bg-white rounded-lg text-gray-800 shadow-lg mb-8 p-8 w-11/12 sm:w-4/5 lg:w-3/4 xl:w-1/2">
-        <ToastContainer />
+        <ToastContainer /> 
         <Temperature setCity={setCity} stats={weatherData && {
           temp: weatherData.current.temp_c,
           condition: weatherData.current.condition.text,
@@ -68,8 +68,8 @@ function App() {
           time: weatherData.location.localtime,
         }} />
         <Forecast forecastData={weatherData && {
-          high: weatherData.forecast.forecastday[0].day.maxtemp_c,
-          low: weatherData.forecast.forecastday[0].day.mintemp_c,
+          high: weatherData.forecast?.forecastday[0]?.day?.maxtemp_c, 
+          low: weatherData.forecast?.forecastday[0]?.day?.mintemp_c, 
         }} />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
